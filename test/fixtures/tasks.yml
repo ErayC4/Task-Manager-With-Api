@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  starting_time: MyString
+  ending_time: MyString
+  repeat_on_day: 1
+  daily_repeat: false
+
+two:
+  name: MyString
+  starting_time: MyString
+  ending_time: MyString
+  repeat_on_day: 1
+  daily_repeat: false

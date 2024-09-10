@@ -20,10 +20,10 @@ function TasksList({ tasks, onTaskUpdated, onTaskDeleted }) {
   const handleUpdate = (e, taskId) => {
     e.preventDefault();
 
-    axios.put(`${API_URL}/${taskId}`, { task: { name: newName, starting_time: newStartingTime, ending_time: newEndingTime } })
+    axios.put(`${API_URL}/${taskId}`, { task: { name: newName, starting_time: newStartingTime, ending_time: newEndingTime } }) // <-----
       .then(response => {
-        onTaskUpdated(response.data);
-        setEditingTaskId(null);
+        onTaskUpdated(response.data); // <----
+        setEditingTaskId(null); // <----
       })
       .catch(error => {
         console.error("There was an error updating the task!", error);
@@ -31,9 +31,9 @@ function TasksList({ tasks, onTaskUpdated, onTaskDeleted }) {
   };
 
   const handleDelete = (taskId) => {
-    axios.delete(`${API_URL}/${taskId}`)
+    axios.delete(`${API_URL}/${taskId}`) // <-----
       .then(() => {
-        onTaskDeleted(taskId);
+        onTaskDeleted(taskId); // <-----
       })
       .catch(error => {
         console.error("There was an error deleting the task!", error);
@@ -44,6 +44,7 @@ function TasksList({ tasks, onTaskUpdated, onTaskDeleted }) {
     <div>
       {tasks.map((task) => (
         <div key={task.id}>
+          {/* nur falls der richtige user */}
           {editingTaskId === task.id ? (
             <form onSubmit={(e) => handleUpdate(e, task.id)}>
               <input

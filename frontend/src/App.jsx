@@ -4,6 +4,7 @@ import './App.css';
 import TasksList from './components/TasksList';
 import TaskForm from './components/TaskForm';
 import axios from 'axios';
+import UserForm from './components/UserForm.jsx'
 
 const API_URL = "http://localhost:3000/api/v1/tasks";
 
@@ -35,6 +36,8 @@ function App() {
       <TaskForm onTaskCreated={handleTaskCreated} />
       <TasksList tasks={tasks} onTaskUpdated={handleTaskUpdated} onTaskDeleted={handleTaskDeleted}
       />
+      <UserForm />
+
     </>
   );
 }

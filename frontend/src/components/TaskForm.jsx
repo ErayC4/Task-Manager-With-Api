@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const API_URL = "http://localhost:3000/api/v1/tasks";
-let access_token = localStorage.getItem("access_token"); // Token holen
 
 function TaskForm({ onTaskCreated }) {
   const [name, setName] = useState('');
@@ -12,11 +11,11 @@ function TaskForm({ onTaskCreated }) {
   const handleSubmit = (e) => {
     e.preventDefault();
   
-    const userId = JSON.parse(localStorage.getItem('resource_owner')).id;
+    const userId = JSON.parse(localStorage.getItem('resource_owner')).id; // <-----
   
-    axios.post(API_URL, { task: { name, starting_time: startingTime, ending_time: endingTime, user_id: userId } })
-      .then(response => {
-        onTaskCreated(response.data);
+    axios.post(API_URL, { task: { name, starting_time: startingTime, ending_time: endingTime, user_id: userId } }) // <-----
+      .then(response => { // <-----
+        onTaskCreated(response.data); // <-----
         setName(''); // Clear the form
         setStartingTime('');
         setEndingTime('');

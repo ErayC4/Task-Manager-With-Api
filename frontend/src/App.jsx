@@ -28,6 +28,7 @@ function App() {
   const handleTaskDeleted = (deletedTaskId) => {
     setTasks(prevTasks => prevTasks.filter(task => task.id !== deletedTaskId));
   };
+  
   return (
     <>
       <h1>Task Manager</h1>
